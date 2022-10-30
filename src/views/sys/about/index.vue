@@ -4,14 +4,11 @@
       <div class="flex justify-between items-center">
         <span class="flex-1">
           <a :href="GITHUB_URL" target="_blank">{{ name }}</a>
-          是一个基于Vue3.0、Vite、 Ant-Design-Vue 、TypeScript
-          的后台解决方案，目标是为中大型项目开发,提供现成的开箱解决方案及丰富的示例,原则上不会限制任何代码用于商用。
+          是mini-circles-site的后台管理系统
         </span>
       </div>
     </template>
     <Description @register="infoRegister" class="enter-y" />
-    <Description @register="register" class="my-4 enter-y" />
-    <Description @register="registerDev" class="enter-y" />
   </PageWrapper>
 </template>
 <script lang="ts" setup>
@@ -19,7 +16,7 @@
   import { Tag } from 'ant-design-vue';
   import { PageWrapper } from '/@/components/Page';
   import { Description, DescItem, useDescription } from '/@/components/Description/index';
-  import { GITHUB_URL, SITE_URL, DOC_URL } from '/@/settings/siteSetting';
+  import { GITHUB_URL } from '/@/settings/siteSetting';
 
   const { pkg, lastBuildTime } = __APP_INFO__;
 
@@ -43,16 +40,6 @@
       render: commonTagRender('blue'),
     },
     {
-      label: '文档地址',
-      field: 'doc',
-      render: commonLinkRender('文档地址'),
-    },
-    {
-      label: '预览地址',
-      field: 'preview',
-      render: commonLinkRender('预览地址'),
-    },
-    {
       label: 'Github',
       field: 'github',
       render: commonLinkRender('Github'),
@@ -62,8 +49,6 @@
   const infoData = {
     version,
     lastBuildTime,
-    doc: DOC_URL,
-    preview: SITE_URL,
     github: GITHUB_URL,
   };
 
@@ -73,20 +58,6 @@
 
   Object.keys(devDependencies).forEach((key) => {
     devSchema.push({ field: key, label: key });
-  });
-
-  const [register] = useDescription({
-    title: '生产环境依赖',
-    data: dependencies,
-    schema: schema,
-    column: 3,
-  });
-
-  const [registerDev] = useDescription({
-    title: '开发环境依赖',
-    data: devDependencies,
-    schema: devSchema,
-    column: 3,
   });
 
   const [infoRegister] = useDescription({

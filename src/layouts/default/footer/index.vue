@@ -1,13 +1,13 @@
 <template>
   <Footer :class="prefixCls" v-if="getShowLayoutFooter" ref="footerRef">
     <div :class="`${prefixCls}__links`">
-      <a @click="openWindow(SITE_URL)">{{ t('layout.footer.onlinePreview') }}</a>
+      <!-- <a @click="openWindow(SITE_URL)">{{ t('layout.footer.onlinePreview') }}</a> -->
 
       <GithubFilled @click="openWindow(GITHUB_URL)" :class="`${prefixCls}__github`" />
 
-      <a @click="openWindow(DOC_URL)">{{ t('layout.footer.onlineDocument') }}</a>
+      <!-- <a @click="openWindow(DOC_URL)">{{ t('layout.footer.onlineDocument') }}</a> -->
     </div>
-    <div>Copyright &copy;2020 Vben Admin</div>
+    <div>Copyright &copy;2020 MCS Admin</div>
   </Footer>
 </template>
 
@@ -17,7 +17,7 @@
 
   import { GithubFilled } from '@ant-design/icons-vue';
 
-  import { DOC_URL, GITHUB_URL, SITE_URL } from '/@/settings/siteSetting';
+  import { GITHUB_URL } from '/@/settings/siteSetting';
   import { openWindow } from '/@/utils';
 
   import { useI18n } from '/@/hooks/web/useI18n';
@@ -52,9 +52,9 @@
         getShowLayoutFooter,
         prefixCls,
         t,
-        DOC_URL,
+        // DOC_URL,
         GITHUB_URL,
-        SITE_URL,
+        // SITE_URL,
         openWindow,
         footerRef,
       };
